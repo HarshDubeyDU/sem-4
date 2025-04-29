@@ -13,9 +13,9 @@
                 ngModel
                 required
                 class="form-control"
-                [class.is-invalid]="(userForm.touched || userForm.submitted) && userForm.controls?.['name']?.valid"
+                [class.is-invalid]="userForm.submitted && userForm.controls?.['name']?.valid"
             />
-            <div class="invalid-feedback" *ngIf="userForm.submitted && !userForm.controls?.['name']?.valid">
+            <div class="invalid-feedback" *ngIf="(userForm.touched || userForm.submitted) && !userForm.controls?.['name']?.valid">
                 Name is required.
             </div>
         </div>
@@ -31,9 +31,9 @@
                 required
                 email
                 class="form-control"
-                [class.is-invalid]="(userForm.touched || userForm.submitted) && !userForm.controls?.['email']?.valid"
+                [class.is-invalid]="userForm.submitted && !userForm.controls?.['email']?.valid"
             />
-            <div class="invalid-feedback" *ngIf="userForm.submitted && !userForm.controls?.['email']?.valid">
+            <div class="invalid-feedback" *ngIf="(userForm.touched || userForm.submitted) && !userForm.controls?.['email']?.valid">
                 Please enter a valid email address.
             </div>
         </div>
@@ -51,7 +51,7 @@
                 class="form-control"
                 [ngClass]="{ 'is-invalid': userForm.submitted && !userForm.controls?.['password']?.valid }"
             />
-            <div class="invalid-feedback" *ngIf="userForm.submitted && !userForm.controls?.['password']?.valid">
+            <div class="invalid-feedback" *ngIf="(userForm.touched || userForm.submitted) && !userForm.controls?.['password']?.valid">
                 Password must be at least 6 characters long.
             </div>
         </div>
