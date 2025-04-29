@@ -1,0 +1,20 @@
+<form #form="ngForm" (submit)="fetchQuoteAndDisplayCustomGreeting()">
+    <label for="name">Name:</label>
+    <input
+        [(ngModel)]="userName"
+        required
+        id="name"
+        name="name"
+        type="text" />
+    <span *ngIf="form.touched && form.invalid">Please enter your name</span>
+
+    <div>
+        <button type="submit" [disabled]="form.invalid">Say Hello</button>
+    </div>
+</form>
+
+<div *ngIf="quote && form.valid">
+    <p>What a wonderful day it is. {{ userName }}, here comes your motivational quote.</p>
+    <h2>{{ quote.quote }}</h2>
+    <span>-- {{ quote.author }}</span>
+</div>
